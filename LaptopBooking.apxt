@@ -1,0 +1,9 @@
+#LaptopBooking - trigger name
+#.Laptop_Bookings__c -as per your org(go to laptop bookings object and copy from that object api name)
+trigger LaptopBooking on Laptop_Bookings__c (After insert,after update) {
+    if(trigger.isAfter && ( trigger.isInsert || trigger.isupdate))
+    {
+      LaptopBookingHandler.sendEmailNotification(trigger.new);
+    }
+}
+
